@@ -1,0 +1,9 @@
+/*!
+ * Name     : ArchCSS - Modern CSS framework for responsive and attractive websites and applications.
+ * Version  : 1.0.0
+ * Author   : @bebagodfried - [archCSS dev.](https://archcss.com/team/@bebagodfried)
+ * License  : MIT license
+ */
+@import url("@googleapis/fonts.min.css");
+@import url("@fontawesome/css/fontawessome.min.css");
+@import url(arch.min.css);
