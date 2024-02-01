@@ -1,7 +1,7 @@
 "use strict";
 /**
  * @package  : ArchCSS - Modern CSS framework for responsive and attractive websites and applications.
- * @version  : 1.0.0
+ * @version  : 2.0.0
  * @author   : @bebagodfried - [archCSS dev.](https://archcss.com/team/@bebagodfried)
  * @license  : MIT license
  */
@@ -37,21 +37,17 @@ let HttpRequest = () => {
         }
     }
 };
+/** GLOBALS */
 /**
- * Globals
- * $_: Get/set document vars
+ * get: getter
+ * @param key
+ * @returns
  */
-let $_ = (get, set = '') => {
-    switch (get) {
+let get = (key) => {
+    switch (key) {
         // DOM Objects
         case 'title':
-            if (set) {
-                document.title = `${set}`;
-                break;
-            }
-            else {
-                return document.title;
-            }
+            return document.title;
         case 'charset':
             return document.characterSet;
         case 'baseURI':
@@ -77,79 +73,21 @@ let $_ = (get, set = '') => {
             return navigator.userAgent;
         // Server & location
         case 'host':
-            if (set) {
-                location.host = `${set}`;
-                break;
-            }
-            else {
-                return location.host;
-            }
+            return location.host;
         case 'hostname':
-            if (set) {
-                location.hostname = `${set}`;
-                break;
-            }
-            else {
-                return location.hostname;
-            }
+            return location.hostname;
         case 'href':
-            if (set) {
-                location.href = `${set}`;
-                break;
-            }
-            else {
-                return location.href;
-            }
+            return location.href;
         case 'url':
-            if (set) {
-                location.href = `${set}`;
-                break;
-            }
-            else {
-                return location.href;
-            }
+            return location.href;
         case 'pathname':
-            if (set) {
-                location.pathname = `${set}`;
-                break;
-            }
-            else {
-                return location.pathname;
-            }
+            return location.pathname;
         case 'port':
-            if (set) {
-                location.port = `${set}`;
-                break;
-            }
-            else {
-                return location.port;
-            }
+            return location.port;
         case 'protocol':
-            if (set) {
-                location.protocol = `${set}`;
-                break;
-            }
-            else {
-                return location.protocol;
-            }
+            return location.protocol;
         case 'search':
-            if (set) {
-                location.search = `${set}`;
-                break;
-            }
-            else {
-                return location.search;
-            }
-        case 'history':
-            switch (set) {
-                case -1: return history.back();
-                case +1: return history.forward();
-                case 0: return history.go();
-                case 'back': return history.back();
-                case 'forward': return history.forward();
-                case 'reload': return history.go();
-                default: return history.go();
-            }
+            return location.search;
         case 'update':
             return document.lastModified;
         // Return https(SSl) state of current page
@@ -166,24 +104,89 @@ let $_ = (get, set = '') => {
         case 'author-name':
             return 'Beba Godfried';
         case 'author-right':
-            return 'Godfried\'Ux';
+            return 'Beba Godfried';
         case 'author-email':
             return 'me@bebagodfried.com';
         case 'author-site':
             return 'https://bebagodfried.com';
         case 'copyright':
-            return 'Powered by Godfried\'Ux';
+            return 'Write with love by @bebagodfried';
         case 'owner':
-            return 'archcss-dev - by Godfried\'Ux';
+            return 'archcss-dev - @bebagodfried';
         case 'version':
             return '2.0.0';
         default:
-            console.info(`[404]: Reference '${get}' not found!`);
+            console.info(`[404]: Reference '${key}' not found!`);
             return null;
     }
 };
-/** end:Globals **/
-// date: Return date
+/**
+ * set: setter
+ * @param key string
+ * @param value string|number
+ * @returns void
+ */
+let set = (key, value = '') => {
+    switch (key) {
+        // DOM Objects
+        case 'title':
+            if (value) {
+                document.title = `${value}`;
+            }
+            break;
+        // Server & location
+        case 'host':
+            if (value) {
+                location.host = `${value}`;
+            }
+            break;
+        case 'hostname':
+            if (value) {
+                location.hostname = `${value}`;
+            }
+            break;
+        case 'href':
+            if (value) {
+                location.href = `${value}`;
+            }
+            break;
+        case 'url':
+            if (value) {
+                location.href = `${value}`;
+            }
+            break;
+        case 'pathname':
+            if (value) {
+                location.pathname = `${value}`;
+            }
+            break;
+        case 'port':
+            if (value) {
+                location.port = `${value}`;
+            }
+            break;
+        case 'protocol':
+            if (value) {
+                location.protocol = `${value}`;
+            }
+            break;
+        case 'search':
+            if (value) {
+                location.search = `${value}`;
+            }
+            break;
+        default:
+            console.info(`[404]: Reference '${key}' not found!`);
+            return null;
+    }
+};
+/** end:GLOBALS **/
+/**
+ * date: date object
+ * @param format string
+ * @param type string
+ * @returns date
+ */
 let date = (format = '', type = '') => {
     // New date object
     var date = new Date();
@@ -314,8 +317,14 @@ let weekdays_fr = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'
 // Months
 let months_en = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let months_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-// DOM: Document Objects Manipulation
-let DOM = (el, all = true) => {
+/** end:date */
+/**
+ * DOM: Document Objects Manipulation
+ * @param el string
+ * @param all string
+ * @returns Object
+ */
+let dom = (el, all = true) => {
     try {
         // Remove white space around the element
         if (typeof (el) == 'string' && el != null)
@@ -337,7 +346,10 @@ let DOM = (el, all = true) => {
         return null;
     }
 };
-// strcopy: copie a text to clipboard
+/**
+ * strcopy: send string to clipboard
+ * @param text string
+ */
 let strcopy = (text) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield navigator.clipboard.writeText(text);
@@ -346,43 +358,25 @@ let strcopy = (text) => __awaiter(void 0, void 0, void 0, function* () {
         console.error('Failed to copy text: ', err);
     }
 });
-// goto: on event redirection to somewhere
+/**
+ * goto: url redirection
+ * @param _location Location
+ */
 let goto = (_location) => {
     try {
         location.href = _location.toString();
     }
     catch (err) {
-        console.error('Failed to redirect: ', err);
+        console.error('Failed redirect: ', err);
     }
 };
-// attrib: Return element specific attribute
-let attrib = (el, attrib, set) => {
-    // Element selection
-    let dom = select(el);
-    // Set an attrribute value
-    if (set) {
-        dom.setAttribute(`${attrib}`, `${set}`);
-        // else return attrribute value
-    }
-    else {
-        return dom.getAttribute(`${attrib}`);
-    }
-};
-// set_attrib: Set an attrribute value to element
-let set_attrib = (el, attrib, set) => {
-    // Element selection
-    let dom = select(el);
-    // Apply the attrribute value to element
-    if (set) {
-        dom.setAttribute(`${attrib}`, `${set}`);
-    }
-    else {
-        console.warn('set_attrib(el: string, attrib: any, set?: any)' + `:  => '${el}.atribute(${attrib}) will be empty.`);
-        dom.setAttribute(`${attrib}`, '');
-    }
-};
-// get_attrib: Get an attrribute value to element
-let get_attrib = (el, attrib) => {
+/**
+ * get_attribute: Get an attrribute value of element
+ * @param el string
+ * @param attrib string
+ * @returns any
+ */
+let get_attribute = (el, attrib) => {
     // Element selection
     let dom = select(el);
     // Return the attrribute value of the element
@@ -396,23 +390,64 @@ let get_attrib = (el, attrib) => {
     }
 };
 /**
- * classlist: add/remove element classes
+ * set_attribute: Set an attrribute value of element
+ * @param el string
+ * @param attrib string
+ * @param value any
+ */
+let set_attribute = (el, attrib, value) => {
+    // Element selection
+    let dom = select(el);
+    // Apply the attrribute value to element
+    if (value) {
+        dom.setAttribute(`${attrib}`, `${value}`);
+    }
+    else {
+        console.warn('set_attrib(el: string, attrib: any, value?: any)' + `:  => '${el}.atribute(${attrib}) will be empty.`);
+        dom.setAttribute(`${attrib}`, '');
+    }
+};
+/** classList */
+/**
+ * get_classlist: return all defined class of an element
+ * @param el string
+ * @returns string[]
+ */
+let get_classlist = (el) => {
+    let dom = select(el);
+    return dom.classList.value.split();
+};
+/**
+ * set_classlist: add/remove element classes
  * If token is true, adds token (same as [...].classList.add()).
  * If force is false, removes token (same as [...].classList.remove()).
- * */
-let classlist = (el, tokens) => {
+ *
+ * @param el string
+ * @param tokens string[]
+ */
+let set_classlist = (el, tokens) => {
     let dom = select(el);
     // check for each token force
     tokens.forEach(key => {
         dom.classList.toggle(key);
     });
 };
-/** end:classlist */
-// create: Create node elements
+/** end: classList */
+/** Node */
+/**
+ * create: Create node elements
+ * @param el string
+ * @returns ElementCreationOptions
+ */
 let create = (el) => {
     return document.createElement(el);
 };
-// select: Node list selector
+/**
+ * select: Node list selector
+ * @param el string
+ * @param all boolean
+ * @returns NodeList
+ */
 let select = (el, all = false) => {
     try {
         // Remove white space around the element
@@ -434,7 +469,11 @@ let select = (el, all = false) => {
         return null;
     }
 };
-// select_tag: HTMLCollection selector
+/**
+ * select_tag: HTMLCollection selector
+ * @param el string
+ * @returns HTMLCollection
+ */
 let select_tag = (el) => {
     try {
         // Remove white space around the element
@@ -448,7 +487,11 @@ let select_tag = (el) => {
         return null;
     }
 };
-// select_id: Element `Id` selector
+/**
+ * select_id: Element `Id` selector
+ * @param el string
+ * @returns HTMLElement
+ */
 let select_id = (el) => {
     try {
         // Remove white space around the element
@@ -462,7 +505,10 @@ let select_id = (el) => {
         return null;
     }
 };
-// drop_all: Remove element(s) list from DOM
+/**
+ * drop_all: Remove element(s) list from DOM
+ * @param list string[]
+ */
 let drop_all = (list) => {
     list.forEach(el => {
         // Element selection from list
@@ -476,7 +522,11 @@ let drop_all = (list) => {
         }
     });
 };
-// drop: Remove element first occurence from DOM
+/**
+ *
+ * @param token string[]
+ * @returns any
+ */
 let drop = (token) => {
     // Element selection
     const dom = select(token);
@@ -488,13 +538,19 @@ let drop = (token) => {
         return null;
     }
 };
-// echo: Add/Replace the content of element(s)
-let echo = (text, el, all = false) => {
+/**
+ * echo: replace the content of element(s)
+ * @param text string
+ * @param el string
+ * @param match_all boolean
+ * @returns string
+ */
+let echo = (text, el, match_all = false) => {
     if (isset(el)) {
-        if (all) {
+        if (match_all) {
             // all = true
             // Genearate a list of all `el`
-            let list = select(el, all);
+            let list = select(el, match_all);
             // for each element of the list add/replace content
             list.forEach((el) => {
                 el.innerHTML = `${text}`;
@@ -515,13 +571,21 @@ let echo = (text, el, all = false) => {
         console.log(`${text}`);
     }
 };
-// get_innerTEXT: Get element text content
+/**
+ * get_innerTEXT: Get element text content
+ * @param el string
+ * @returns string
+ */
 let get_innerTEXT = (el) => {
     // Element selection
     let dom = select(el);
     return dom.innerTEXT;
 };
-// set_innerTEXT: Replace element text content
+/**
+ * set_innerTEXT: Replace element text content
+ * @param el string
+ * @param text string
+ */
 let set_innerTEXT = (el, text) => {
     try {
         document.querySelector(el).innerTEXT = `${text}`;
@@ -531,12 +595,20 @@ let set_innerTEXT = (el, text) => {
         console.error(error);
     }
 };
-// get_innerHTML: Get html content of element
+/**
+ * get_innerHTML: Get html content of element
+ * @param el string
+ * @returns string
+ */
 let get_innerHTML = (el) => {
     // Get html content of an element
     return document.querySelector(el).innerHTML;
 };
-// set_innerHTML: Replace html content of element
+/**
+ * set_innerHTML: Replace html content of element
+ * @param el string
+ * @param concent string
+ */
 let set_innerHTML = (el, concent) => {
     try {
         document.querySelector(el).innerHTML = `${concent}`;
@@ -546,17 +618,23 @@ let set_innerHTML = (el, concent) => {
         console.error(error);
     }
 };
-// display: Display/hide specific DOM element
-let display = (el, displayValue = 'block') => {
+/** end:Node */
+/**
+ * display: display/hide specific DOM element
+ * @param el string
+ * @param displayValue string
+ * @returns string
+ */
+function _display(el, displayValue) {
     // Element selection
-    const dom = select(el);
+    let dom = select(el);
     // if hidden by style attribute then display as `displayValue`
     if (dom.style.display == 'none') {
-        return dom.style.display == `${displayValue}`;
+        dom.style.display == `${displayValue}`;
         // if displayed by style attribute then change the value to `none`
     }
     else if (dom.style.display == `${displayValue}`) {
-        return dom.style.display == 'none';
+        dom.style.display == 'none';
     }
     else {
         // if hidden by class attribute containing `hidden` token
@@ -591,10 +669,10 @@ let display = (el, displayValue = 'block') => {
                 let hide = dom.getAttribute('hidden');
                 if (isset(hide)) {
                     if (hide == true) {
-                        return hide = false;
+                        hide = false;
                     }
                     else {
-                        return hide = true;
+                        hide = true;
                     }
                 }
             }
@@ -604,11 +682,25 @@ let display = (el, displayValue = 'block') => {
             }
         }
     }
+}
+let display = (el, display = 'block') => {
+    if (typeof (el) == 'string') {
+        _display(el, display);
+    }
+    else {
+        el.forEach((e) => {
+            _display(e, display);
+        });
+    }
 };
-// hide: make hidden element of first occurence from DOM
-let hide = (el) => {
+/**
+ * hide: make a hidden element
+ * @param el string
+ * @returns void
+ */
+function _hide(el) {
     // Possible classlist values
-    const list = ['block', 'inline-block', 'flex', 'inline-flex'];
+    const list = ['block', 'inline', 'inline-block', 'flex', 'inline-flex'];
     // Element selection
     const dom = select(el);
     try {
@@ -634,17 +726,35 @@ let hide = (el) => {
             console.error(display_ERR);
         }
     }
+}
+let hide = (el) => {
+    if (typeof (el) == 'string') {
+        _hide(el);
+    }
+    else {
+        el.forEach((e) => {
+            _hide(e);
+        });
+    }
 };
+/** EventListener */
 /**
- * Events listners
- * ...
+ * on: envent listener
+ * @param event string
+ * @param listener Function
  */
-// On: Events listner
 let on = (event, listener) => {
     event = event.trim();
-    document.addEventListener(event, listener);
+    document.addEventListener(event, listener());
 };
-let on_scroll = (el, add_list, rm_list = [], offset = 0) => {
+/**
+ * at_scroll: based on scroll offset, this while add/remove some classname to an object
+ * @param el string
+ * @param add_list string[]
+ * @param rm_list string[]
+ * @param offset number
+ */
+let at_scroll = (el, add_list, rm_list = [], offset = 0) => {
     var dom = select(el);
     // Add or remove class based on scroll position
     if (window.scrollY > offset) {
@@ -664,26 +774,21 @@ let on_scroll = (el, add_list, rm_list = [], offset = 0) => {
         });
     }
 };
+/**
+ * scroll_to: scroll to element on page
+ * @param el string
+ */
 let scroll_to = (el) => {
     // JavaScript to scroll to the target element
     var dom = select_id(el);
     dom.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
-// Onclick: Click listner
-let onClick = (el, listener) => {
-    const d = select_id(el);
-    return d.onclick = listener;
-};
-// Ondlclick: Double click listner
-let onDblClick = (el, listener) => {
-    const d = select_id(el);
-    return d.ondblclick = listener;
-};
+/** Validation */
 /**
- * Validation
- * Check for exist listner
+ * isset: Return true for no-empty Object/var
+ * @param key string
+ * @returns boolean
  */
-// Isset: Return true for no-empty Object/var
 let isset = (key) => {
     if (key != null && key != false && key != undefined) {
         return true;
@@ -695,257 +800,281 @@ let isset = (key) => {
         return false;
     }
 };
+/** Mixin */
 /**
- * Mixed
- * popUp: create advenced pup-up box style
- * @param popUp
+ * pop: create advenced pop-up box style
  */
-let popUp = function (window = { title: ``, favicon: ``, content: ``, html: ``, href: ``, titlebar: true, rounded: true, shadow: true, classlist: [], style: ``, border: true, overlay: false, height: ``, width: ``, top: ``, right: ``, bottom: ``, left: ``, index: 8, timeout: 0 }) {
-    // Pop_up 
-    // #1. Create a new window with basic set
-    const WINDOW = create('div');
-    // setup
-    WINDOW.id = window.title;
-    WINDOW.classList.add('rounded', 'flex', 'flex-column', 'select-none');
-    WINDOW.style.position = 'fixed';
-    // size
-    WINDOW.style.height = window.height;
-    WINDOW.style.width = window.width;
-    // #2. Check window's already exist
-    if (select_id(`${WINDOW.id}`)) {
-        let el = select_id(WINDOW.id);
-        el === null || el === void 0 ? void 0 : el.classList.add('animate-pulse');
-        setTimeout(() => {
-            el === null || el === void 0 ? void 0 : el.classList.remove('animate-pulse');
-        }, 1000);
-        return null;
+class frame {
+    constructor(title) {
+        this.title = title;
+        this.favicon = "";
+        this.content = "";
+        this.html = "";
+        this.href = "";
+        this.titlebar = true;
+        this.rounded = true;
+        this.shadow = true;
+        this.classlist = [];
+        this.style = "";
+        this.border = true;
+        this.overlay = false;
+        this.height = 96;
+        this.width = 250;
+        this.top = 0;
+        this.right = 0;
+        this.bottom = 0;
+        this.left = 0;
+        this.index = 8;
+        this.timeout = 0;
+        this.title = title;
     }
-    // #3. classlist: Add more features/tweaks
-    if (window.classlist) {
-        window.classlist.forEach(classItem => {
-            WINDOW.classList.add(classItem);
-        });
-    }
-    // #4. index/z-index: add a window priority (default: 8)
-    if (window.index) {
-        WINDOW.classList.add(`${'z-' + window.index}`);
-    }
-    else {
-        WINDOW.classList.add('z-8');
-    }
-    // #5. style: choose apearence between dark/light (default: light)
-    if (`${window.style}` == 'dark') {
-        WINDOW.classList.add('bg-dark-900', 'fg-light');
-    }
-    else if (`${window.style}` == 'light') {
-        WINDOW.classList.add('bg-light', 'fg-dark-900');
-    }
-    else if (`${window.style}` == 'none') {
-        WINDOW.style.color = 'inherit';
-    }
-    else {
-        WINDOW.classList.add('bg-light', 'fg-dark-900');
-    }
-    // #6. border: enable window border (default: true)
-    if (window.border == true) {
-        WINDOW.classList.add('border');
-    }
-    else if (window.border == false) {
-        // do nothing ...
-    }
-    else {
-        WINDOW.classList.add('border');
-    }
-    // #7. rounded: enable window rounded border (default: true)
-    if (window.rounded == true) {
-        WINDOW.classList.add('rounded');
-    }
-    else if (window.rounded == false) {
-        // do nothing ...
-    }
-    else {
-        WINDOW.classList.add('rounded');
-    }
-    // #8. shadow: enable window shadow (default: true)
-    if (window.shadow == true) {
-        WINDOW.classList.add('shadow-sm');
-    }
-    else if (window.shadow == false) {
-        // do nothing ...
-    }
-    else {
-        WINDOW.classList.add('shadow-sm');
-    }
-    // #9. [top, right, bottom, left]: set window position
-    if (window.top || window.right || window.bottom || window.left) {
-        WINDOW.style.top = window.top;
-        WINDOW.style.right = window.right;
-        WINDOW.style.bottom = window.bottom;
-        WINDOW.style.left = window.left;
-    }
-    else {
-        WINDOW.style.top = '50%';
-        WINDOW.style.left = '50%';
-        WINDOW.classList.add('translate--50');
-    }
-    // #10. header/title bar
-    // #10.1 Create a title bar 
-    const HEADER = create('div');
-    HEADER.classList.add('flex', 'items-center', 'justify-between', 'full-width');
-    HEADER.style.padding = '.2rem';
-    // #10.2 favicon: add an icon as window illustrator
-    const FAVICON = create('img');
-    if (window.favicon) {
-        FAVICON.src = window.favicon;
-        FAVICON.classList.add('size-32');
-    }
-    // #10.3 Window action bar
-    // * title: set the window title/id
-    const TITLE = create('span');
-    TITLE.classList.add('pl-1', 'line-clamp-1', 'sm:line-clamp-1');
-    TITLE.innerHTML = window.title;
-    // * add moving icon
-    const WIN_Move = create('button');
-    WIN_Move.classList.add('bg-none', 'cursor-default', 'fa-solid', 'fa-up-down-left-right', 'p-0', 'rounded-full', 'size-32', 'muted');
-    // * add closing button
-    const WIN_Close = create('button');
-    WIN_Close.classList.add('bg-none', 'fa-solid', 'fa-times', 'hover:bg-danger', 'p-0', 'rounded-full', 'size-32');
-    // #11. views: create adaptable content
-    var view = '';
-    if (window.content) {
-        view = 'p';
-    }
-    else if (window.html) {
-        view = 'div';
-    }
-    else if (window.href) {
-        view = 'iframe';
-    }
-    // - create main window view
-    const CONTENT = create(view);
-    if (window.content) {
-        CONTENT.classList.add('m-0', 'px-2', 'py-1', 'w-full');
-        CONTENT.innerHTML = window.content;
-        if (window.titlebar == true) {
-            CONTENT.classList.add('border', 'border-0', 'border-t-1');
-        }
-    }
-    else if (window.html) {
-        CONTENT.classList.add('max-height', 'border-0', 'border-t-1', 'border-white', 'px-2', 'py-1', 'w-full');
-        CONTENT.innerHTML = window.html;
-    }
-    else if (window.href) {
-        CONTENT.classList.add('no-border');
-        CONTENT.height = '100%';
-        CONTENT.width = '100%';
-        CONTENT.src = window.href;
-        if (window.titlebar == true) {
-            CONTENT.classList.add('border-0', 'border-t-1', 'border-white');
-        }
-    }
-    // #12. Actions
-    // #12.1 draging action (double-click)
-    WINDOW.ondblclick = () => {
-        let move = get_attrib('.js_focus', 'aria-grabbed');
-        WINDOW.classList.toggle('cursor-grabbing');
-        if (move == 'true') {
-            WINDOW.setAttribute('aria-grabbed', 'false');
-            WIN_Move.classList.add('muted');
-        }
-        else {
-            WINDOW.setAttribute('aria-grabbed', 'true');
-            WIN_Move.classList.remove('muted');
-        }
-    };
-    WINDOW.addEventListener('mousemove', (e) => {
-        let focus = select('.js_focus');
-        let drag = get_attrib(`#${focus.id}`, 'aria-grabbed');
-        // ajust window option according to cursor position
-        if (focus && drag == 'true') {
-            let x = e.clientX;
-            let y = e.clientY;
-            WINDOW.style.left = `${x}px`;
-            WINDOW.style.top = `${y}px`;
-        }
-    });
-    // #12.1 closing action (cross button click)
-    WIN_Close.onclick = () => {
-        drop('.js_focus');
-        try {
-            // remove window overlay if enabled
-            drop('#window_overlay');
-        }
-        catch (error) {
+    pop() {
+        // Pop
+        // #1. Create a new window with basic value
+        const WINDOW = create('div');
+        // setup
+        WINDOW.id = this.title;
+        WINDOW.classList.add('rounded', 'select-none');
+        WINDOW.style.position = 'fixed';
+        // size
+        WINDOW.style.height = this.height;
+        WINDOW.style.width = this.width;
+        // #2. Check window's already exist
+        if (select_id(`${WINDOW.id}`)) {
+            let el = select_id(WINDOW.id);
+            el === null || el === void 0 ? void 0 : el.classList.add('animate-pulse');
+            setTimeout(() => {
+                el === null || el === void 0 ? void 0 : el.classList.remove('animate-pulse');
+            }, 1000);
             return null;
         }
-    };
-    // #12.2 focus/`switch focus` action priority(hover/click on window)
-    WINDOW.addEventListener('mouseover', () => {
-        WINDOW.classList.add('js_focus');
-        if (!window.index) {
-            WINDOW.onclick = () => {
-                let lostFocus = select('.z-8');
-                if (lostFocus) {
-                    lostFocus.classList.add('z-7');
-                    lostFocus.classList.remove('z-8');
-                }
-                WINDOW.classList.add('z-8');
-            };
+        // #3. classlist: Add more features/tweaks
+        if (isset(this.classlist)) {
+            this.classlist.forEach(classItem => {
+                WINDOW.classList.add(classItem);
+            });
         }
-    });
-    // #12.3 lost focus priority
-    WINDOW.addEventListener('mouseleave', () => {
-        WINDOW.classList.remove('js_focus');
-    });
-    // #12.4 timeout
-    if (window.timeout != 0 && window.timeout != null) {
-        let timeout = window.timeout;
-        setTimeout(() => {
-            WINDOW.classList.add('animate-fadeOut');
-        }, timeout);
-        WINDOW.remove();
-    }
-    // #13. final views
-    // # header sections
-    //   - favicon & title block
-    let div_1 = create('div');
-    div_1.classList.add('flex', 'items-center');
-    if (window.favicon) {
-        div_1.appendChild(FAVICON);
-    }
-    div_1.appendChild(TITLE);
-    //   - window actions block
-    let div_2 = create('div');
-    div_2.classList.add('flex', 'items-center', 'g-1');
-    div_2.appendChild(WIN_Move);
-    div_2.appendChild(WIN_Close);
-    HEADER.appendChild(div_1);
-    HEADER.appendChild(div_2);
-    // #14. Ready header view's
-    if (window.titlebar != false) {
-        WINDOW.appendChild(HEADER);
-    }
-    // #15. Ready content view's
-    WINDOW.appendChild(CONTENT);
-    // *** overlay options view ***
-    if (window.overlay == true) {
-        let overlay = create('div');
-        overlay.id = 'window_overlay';
-        overlay.classList.add('absolute', 'fullscreen', 'top-0', 'left-0', 'backdrop-blur-10', 'ease-in', 'animate-fadeIn', 'animated-500');
-        if (window.index) {
-            let i = window.index;
-            overlay.classList.add(`z-${i - 1}`);
+        // #4. index/z-index: add a window priority (default: 8)
+        if (isset(this.index)) {
+            WINDOW.classList.add(`${'z-' + this.index}`);
         }
         else {
-            overlay.classList.add('z-8');
+            WINDOW.classList.add('z-8');
         }
-        document.body.appendChild(overlay);
-        document.body.appendChild(WINDOW);
+        // #5. style: choose apearence between dark/light (default: light)
+        if (`${this.style}` == 'dark') {
+            WINDOW.classList.add('bg-dark-900', 'fg-light');
+        }
+        else if (`${this.style}` == 'light') {
+            WINDOW.classList.add('bg-light', 'fg-dark-900');
+        }
+        else if (`${this.style}` == 'none') {
+            WINDOW.style.color = 'inherit';
+        }
+        else {
+            WINDOW.classList.add('bg-light', 'fg-dark-900');
+        }
+        // #6. border: enable window border (default: true)
+        if (isset(this.border == true)) {
+            WINDOW.classList.add('border');
+        }
+        else if (isset(this.border == false)) {
+            // do nothing ...
+        }
+        else {
+            WINDOW.classList.add('border');
+        }
+        // #7. rounded: enable window rounded border (default: true)
+        if (isset(this.rounded == true)) {
+            WINDOW.classList.add('rounded');
+        }
+        else if (isset(this.rounded == false)) {
+            // do nothing ...
+        }
+        else {
+            WINDOW.classList.add('rounded');
+        }
+        // #8. shadow: enable window shadow (default: true)
+        if (isset(this.shadow == true)) {
+            WINDOW.classList.add('shadow-1');
+        }
+        else if (isset(this.shadow == false)) {
+            // do nothing ...
+        }
+        else {
+            WINDOW.classList.add('shadow-1');
+        }
+        // #9. [top, right, bottom, left]: value window position
+        if (isset(this.top) || isset(this.right) || isset(this.bottom) || isset(this.left)) {
+            WINDOW.style.top = this.top;
+            WINDOW.style.right = this.right;
+            WINDOW.style.bottom = this.bottom;
+            WINDOW.style.left = this.left;
+        }
+        else {
+            WINDOW.style.top = '50%';
+            WINDOW.style.left = '50%';
+            WINDOW.classList.add('translate-center');
+        }
+        // #10. header/title bar
+        // #10.1 Create a title bar 
+        const HEADER = create('div');
+        HEADER.classList.add('flex', 'items-center', 'justify-between', 'full-width');
+        HEADER.style.padding = '.2rem';
+        // #10.2 favicon: add an icon as window illustrator
+        const FAVICON = create('img');
+        if (isset(this.favicon)) {
+            FAVICON.src = this.favicon;
+            FAVICON.classList.add('size-32');
+        }
+        // #10.3 Window action bar
+        // * title: value the window title/id
+        const TITLE = create('span');
+        TITLE.classList.add('pl-1', 'line-clamp-1', 'sm:line-clamp-1');
+        TITLE.innerHTML = this.title;
+        // * add moving icon
+        const WIN_Move = create('button');
+        WIN_Move.classList.add('bg-none', 'cursor-default', 'fa-solid', 'fa-up-down-left-right', 'p-0', 'rounded-full', 'size-32', 'muted');
+        // * add closing button
+        const WIN_Close = create('button');
+        WIN_Close.classList.add('bg-none', 'fa-solid', 'fa-times', 'hover:bg-danger', 'p-0', 'rounded-full', 'size-32');
+        // #11. views: create adaptable content
+        var view = '';
+        if (isset(this.content)) {
+            view = 'p';
+        }
+        else if (isset(this.html)) {
+            view = 'div';
+        }
+        else if (isset(this.href)) {
+            view = 'iframe';
+        }
+        // - create main window view
+        const CONTENT = create(view);
+        if (isset(this.content)) {
+            CONTENT.classList.add('m-0', 'px-2', 'py-1', 'w-full');
+            CONTENT.innerHTML = this.content;
+            if (isset(this.titlebar == true)) {
+                CONTENT.classList.add('border', 'border-0', 'border-t-1');
+            }
+        }
+        else if (isset(this.html)) {
+            CONTENT.classList.add('max-height', 'border-0', 'border-t-1', 'border-white', 'px-2', 'py-1', 'w-full');
+            CONTENT.innerHTML = this.html;
+        }
+        else if (isset(this.href)) {
+            CONTENT.classList.add('no-border');
+            CONTENT.height = '100%';
+            CONTENT.width = '100%';
+            CONTENT.src = this.href;
+            if (isset(this.titlebar == true)) {
+                CONTENT.classList.add('border-0', 'border-t-1', 'border-white');
+            }
+        }
+        // #12. Actions
+        // #12.1 draging action (double-click)
+        WINDOW.ondblclick = () => {
+            let move = get_attribute('.js_focus', 'aria-grabbed');
+            WINDOW.classList.toggle('cursor-grabbing');
+            if (move == 'true') {
+                WINDOW.setAttribute('aria-grabbed', 'false');
+                WIN_Move.classList.add('muted');
+            }
+            else {
+                WINDOW.setAttribute('aria-grabbed', 'true');
+                WIN_Move.classList.remove('muted');
+            }
+        };
+        WINDOW.addEventListener('mousemove', (e) => {
+            let focus = select('.js_focus');
+            let drag = get_attribute(`#${focus.id}`, 'aria-grabbed');
+            // ajust window option according to cursor position
+            if (focus && drag == 'true') {
+                let x = e.clientX;
+                let y = e.clientY;
+                WINDOW.style.left = `${x}px`;
+                WINDOW.style.top = `${y}px`;
+            }
+        });
+        // #12.1 closing action (cross button click)
+        WIN_Close.onclick = () => {
+            drop('.js_focus');
+            try {
+                // remove window overlay if enabled
+                drop('#window_overlay');
+            }
+            catch (error) {
+                return null;
+            }
+        };
+        // #12.2 focus/`switch focus` action priority(hover/click on window)
+        WINDOW.addEventListener('mouseover', () => {
+            WINDOW.classList.add('js_focus');
+            if (!this.index) {
+                WINDOW.onclick = () => {
+                    let lostFocus = select('.z-8');
+                    if (lostFocus) {
+                        lostFocus.classList.add('z-7');
+                        lostFocus.classList.remove('z-8');
+                    }
+                    WINDOW.classList.add('z-8');
+                };
+            }
+        });
+        // #12.3 lost focus priority
+        WINDOW.addEventListener('mouseleave', () => {
+            WINDOW.classList.remove('js_focus');
+        });
+        // #12.4 timeout
+        if (isset(this.timeout != 0 && this.timeout != null)) {
+            let timeout = this.timeout;
+            setTimeout(() => {
+                WINDOW.classList.add('animate-fadeOut');
+            }, timeout);
+            WINDOW.remove();
+        }
+        // #13. final views
+        // # header sections
+        //   - favicon & title block
+        let div_1 = create('div');
+        div_1.classList.add('flex', 'items-center');
+        if (isset(this.favicon)) {
+            div_1.appendChild(FAVICON);
+        }
+        div_1.appendChild(TITLE);
+        //   - window actions block
+        let div_2 = create('div');
+        div_2.classList.add('flex', 'items-center', 'g-1');
+        div_2.appendChild(WIN_Move);
+        div_2.appendChild(WIN_Close);
+        HEADER.appendChild(div_1);
+        HEADER.appendChild(div_2);
+        // #14. Ready header view's
+        if (isset(this.titlebar != false)) {
+            WINDOW.appendChild(HEADER);
+        }
+        // #15. Ready content view's
+        WINDOW.appendChild(CONTENT);
+        // *** overlay options view ***
+        if (isset(this.overlay == true)) {
+            let overlay = create('div');
+            overlay.id = 'window_overlay';
+            overlay.classList.add('absolute', 'fullscreen', 'top-0', 'left-0', 'backdrop-blur-10', 'ease-in', 'animate-fadeIn', 'animated-500');
+            if (isset(this.index)) {
+                let i = this.index;
+                overlay.classList.add(`z-${i - 1}`);
+            }
+            else {
+                overlay.classList.add('z-8');
+            }
+            document.body.appendChild(overlay);
+            document.body.appendChild(WINDOW);
+        }
+        else {
+            document.body.appendChild(WINDOW);
+        }
     }
-    else {
-        document.body.appendChild(WINDOW);
-    }
-};
+}
 /**
  * Cookies manage
  */

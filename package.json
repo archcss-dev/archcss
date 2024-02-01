@@ -1,0 +1,30 @@
+{
+  "name": "archcss",
+  "version": "2.0.0",
+  "description": "The Architect CSS, is utility-first CSS framework that allows you to quickly create and design your websites and applications with flexible, easy-to-use classes without writing any custom CSS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archcss-dev/archcss.git"
+  },
+  "keywords": [
+    "javascript",
+    "opensource",
+    "framework",
+    "ui",
+    "ux",
+    "css-framework",
+    "architect",
+    "architect-ui",
+    "archcss"
+  ],
+  "author": "Beba Godfried",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bebagodfried/archcss/issues"
+  },
+  "homepage": "https://github.com/archcss-dev/archcss#readme"
+}

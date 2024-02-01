@@ -1,0 +1,76 @@
+1.0.0
+**Full Changelog**: https://github.com/archcss-dev/archcss/commits/v1.0.0
+
+2.0
+[css]
+- new folders structure
+- new gradient synthax `gradient`-<color_1>-<color_2>-<color_3>
+- new radius synthax rounnded-<pill|full|1|2|3|4|5|6>
+
+- add 12 sass brand colors
+- add 3 elementor brand colors
+- add `scrollbar`-<0>
+- add `fancy` option as class for table
+- add `slate` color 
+- add `font-style reset` by d-none 
+
+- now support for flex order as [items-<order>] (from `1` to `12`)
+- now support auto color on simple brand class
+- now support auto uppercase and center for buttons
+- now support for elements visibility 
+- now support <h1...6> `class` similar to heading title
+
+- remove `flex-span` class to [flexspan]
+- remove `bc`-<color> class to `brand-color`-<brand_name>-<color_number>
+- remove `border` as bordered class to `border`-<all>
+- remove `shadow` class to [box-shadow]
+- remove `rounded`-<sm|md|lg|xl>
+- remove shadow on `translate`-<top|left|bottom|right>
+- remove litterals gap (narrow, small, normal, large, wide)
+
+- update Font Awesome to 6.5.1
+- update generic `b` and `em` font-weight
+- update naming list-style-type as class
+- update `-row` elements (width: 100%)
+- update `-row` elements for mobile-first
+- update <hidden> class
+- update <divider> (add shadow, add opacity)
+- update <rounded> (now support from `1` to `12`px )
+- update `scrollbar` width to `3px`
+- update `grid` (gutter)
+- update `table` (width, padding) and `td`, `th` (border)
+- update `spacing` rest (apply to responsive)
+- update `positions` rest (apply to responsive)
+- update `spacing` (from .25rem to 3rem)
+- update `elements` weight (font-weight)
+- update `font-*` utility supported size from `7px` to `96px` as common word-processor
+- update global `font-size` for `h1` to `h6`
+- update global `font-size` classname `fs-`<size> instead of `font`-<size>
+
+- replace `flex`-<length> with `flexspan`-<length>
+- replace `flex-col-reverse` with [flex-column-reverse]
+- replace `flex flex-col-reverse` with [flex-column-reverse]
+- replace `flex flex-column` twith [flex-column]
+- replace `flex flex-row` with [flex-row] and fix items at position
+- replace `self`-<axis> with align-self-<axis> and (add flex: 1 !!!no more need `flexspan`/`flexspan-1`)
+- replace `translate-middle` with `translate-center`
+
+- fix row items position
+- fix margin auto property
+- fix padding auto property
+- fix/update @googleapis font
+
+[js]
+- update
+- remove history
+- splite GLOBALS ($_) in `getter` (get) & `setter` (set)
+- replace `DOM()` with `dom()`
+- remove attrib
+- replace `set_attrib()` to `set_attribute()`
+- update listener [on(event: string, listener: Function)]
+- update `display()` (now support `arrayList`) _eg: display(['#elementId1','#elementId2'])_
+- update `hide()` (now support `arrayList`) _eg: hide(['#elementId1','#elementId2'])_
+- remove `onClick()`, `onDblClick()`
+- replace `on_scroll()` to `at_scroll()` [on_scroll(el: string, add_list: Array<string>, rm_list: Array<string> = [], offset: number = 0)]
+- replace and update `popUp` to `pop` with frame object
+- add/update listener [scroll_to(el: string)]
