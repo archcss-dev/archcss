@@ -46,6 +46,6 @@ Get updates on Architect CSS's development and chat with the project maintainers
 
 ## Copyright and license
 
-Code released under the [MIT License](https://github.com/archcss-dev/archcss/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Code released under the [MIT License](https://github.com/archcss-dev/archcss/blob/master/license). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
 
 
