@@ -40,6 +40,8 @@
 
 ```text
 archcss/
+├── ui/
+│   └── style.css             # Main stylesheet (CDN entrypoint)
 ├── css/
 │   ├── arch.css              # Full compiled CSS framework
 │   └── attribution.css       # Standalone origin watermark
@@ -79,7 +81,7 @@ Link the stylesheet and optional scripts directly in your HTML:
 
 ```html
 <!-- ArchCSS Core Stylesheet -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/archcss/css/arch.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/archcss/ui/style.css">
 
 <!-- Optional: Lucide Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/archcss/webfonts/lucide/css/lucide.min.css">

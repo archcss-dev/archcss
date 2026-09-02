@@ -3,8 +3,8 @@
   "version": "3.0.0",
   "description": "The Architect CSS, is utility-first CSS framework that allows you to quickly create and design your websites and applications with flexible, easy-to-use classes without writing any custom CSS.",
   "main": "index.js",
-  "style": "css/arch.css",
-  "jsdelivr": "css/arch.css",
+  "style": "ui/style.css",
+  "jsdelivr": "ui/style.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

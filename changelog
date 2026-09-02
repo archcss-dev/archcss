@@ -27,6 +27,7 @@
 - now support styling input[type=button/reset/submit] identically to <button>
 - now support bidirectional shade and tint generation via shade-or-tint() across all color utilities and states
 - now support universal border reset (border-width: 0; border-style: solid;) ensuring border width classes display properly
+- now support ui/style.css stylesheet entrypoint for CDN and bundler distribution
 
 - remove arch.dev.css and arch.min.css in favor of consolidated arch.css
 - remove external Google Fonts loading by default for offline-first performance
