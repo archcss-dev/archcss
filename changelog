@@ -1,7 +1,94 @@
-1.0.0
-**Full Changelog**: https://github.com/archcss-dev/archcss/commits/v1.0.0
+# 3.0.0-beta.1
+**3.0.0-beta.1**
+**Full Changelog**: https://github.com/archcss-dev/archcss/compare/v2.0.0...v3.0.0-beta.1
 
-2.0
+[css]
+- new modular SCSS architecture with separated layers (attribution, libs, config, utilities, base, elements, helpers)
+- new atomic mixin generation system (generate-utils, generate-state-utils, responsive-class, theme-colors)
+- new responsive pseudo-state variants for hover:, focus:, and active:
+- new equal-width CSS Grid columns grid-cols-<1..12> using repeat(n, 1fr)
+- new responsive auto-fill and auto-fit grid scales grid-fill-<100..300> and grid-fit-<100..300> (minmax in 20px steps)
+- new grid placement and alignment utilities (col-start-*, col-end-*, row-start-*, row-end-*, justify-items-*, justify-self-*)
+- new directional gradients .gradient-to-<side>-<color_1>-<color_2> for 8 directions
+- new radial gradients .gradient-radial-<color_1>-<color_2>
+- new rem-based positioning family inset-<0|x|y|t|r|b|l>-<value>
+- new alpha opacity utilities bg-<color>-alpha-<10..90> and text-<color>-alpha-<10..90>
+- new flex utilities flex-grow-<0|1> and flex-shrink-<0|1>
+- new form elements and classes (form-block, form-control, form-check, searchbox, checkbox)
+
+- add 3-color linear gradient support gradient-<color_1>-<color_2>-<color_3>
+- add half-step values to spacing scale
+- add base margin-auto utilities for all directions (m-auto, mx-auto, my-auto, mt-auto, mr-auto, mb-auto, ml-auto)
+- add pixel-based font scale font-<7..96> aligned with standard typography increments
+- add oblique font-style utility font-oblique
+- add invisible CSS watermark attribution tracking (css/attribution.css)
+
+- now support Lucide icon utilities and webfonts locally bundled under webfonts/lucide/
+- now support styling input[type=button/reset/submit] identically to <button>
+- now support bidirectional shade and tint generation via shade-or-tint() across all color utilities and states
+- now support universal border reset (border-width: 0; border-style: solid;) ensuring border width classes display properly
+- now support ui/style.css stylesheet entrypoint for CDN and bundler distribution
+
+- remove arch.dev.css and arch.min.css in favor of consolidated arch.css
+- remove external Google Fonts loading by default for offline-first performance
+- remove title-* font-size duplicates in favor of standardized fs-* and h1-h6 classes
+
+- update FontAwesome webfonts to local bundle under webfonts/fontawesome/
+- update Google Fonts location to webfonts/googleapis/
+- update gap utility naming from g-<n> to gap-<n>
+- update css/architect.css renamed to css/attribution.css
+- update headings h1 through h6 component styles and font-size utilities
+- update button and form controls spacing and alignment
+
+- replace .deleted invalid text-decoration keyword with standard line-through (aliasing .strike)
+- replace legacy js/dom.js with TypeScript-compiled js/plugin.js
+
+- fix to-rgba() percentage calculation ensuring bg-*-alpha-* utilities render with intended opacity
+- fix row-start-* and row-end-* grid utilities using line index instead of width percentage
+- fix shade/tint logic in hover:, focus:, and active: pseudo-variants for border, outline, link, and background
+- fix button :empty(*) selector to standard :empty
+- fix progress bar width mismatch caused by display: flex on <progress>
+- fix duplicate rounded-{side}-{radius} CSS rule emission
+- fix @keyframes glow values and turn fraction
+- fix divider and list-divider mixins setting height to border-style keyword
+- fix dead a:hover rule and LVHA link state ordering in base styles
+- fix duplicate $deep-purple color definition
+- fix fractional RGB channels produced by color mixing via channel rounding
+
+[js]
+- new unified DOM plugin (js/plugin.js) compiled from TypeScript (src/ts/plugin.ts)
+- new HttpRequest AJAX utility for XMLHttpRequest handling
+- new strcopy(text, callback) clipboard copy helper
+- new smooth navigation helper scroll_to(el, offset)
+- new event listener helper on(event, listener)
+- update display() to support element arrays (e.g. display(['#id1', '#id2']))
+- update hide() to support element arrays (e.g. hide(['#id1', '#id2']))
+- update toggle() for toggling visibility of single or multiple elements
+- update at_scroll() scroll position listener with element triggers
+- update global $_ getter and setter for document, BOM, and location properties
+- update frame modal, overlay, and pop-up controller
+- update framework version identification to v3.0.0-beta
+
+[webfonts]
+- add Lucide icon font family (webfonts/lucide/css/lucide.css, webfonts/lucide/css/lucide.min.css, webfonts/lucide/js/lucide.min.js)
+- add FontAwesome webfont assets (fa-brands-400, fa-regular-400, fa-solid-900, fa-v4compatibility in TTF and WOFF2)
+- update FontAwesome structure under webfonts/fontawesome/
+- update Google Fonts structure under webfonts/googleapis/
+
+# 2.1.0-preview
+[js]
+- prefer method `display()` instead of `pop()` for `frame` object
+
+# 2.0.1
+**2.0.1-beta-1**
+- fix shadow offset
+- fix transform `.scale-5` value
+- fix transform axis syntax
+- fix margin redundancy for `.m-audio`, `.m<axis>-auto`
+- fixed some latency by removing font libraries (@fontawesome & @googleapis) from `min` and `dev` files
+- update readme.md
+
+# 2.0.0
 [css]
 - new folders structure
 - new gradient synthax `gradient`-<color_1>-<color_2>-<color_3>
@@ -74,3 +161,6 @@
 - replace `on_scroll()` to `at_scroll()` [on_scroll(el: string, add_list: Array<string>, rm_list: Array<string> = [], offset: number = 0)]
 - replace and update `popUp` to `pop` with frame object
 - add/update listener [scroll_to(el: string)]
+
+# 1.0.0
+**Full Changelog**: https://github.com/archcss-dev/archcss/commits/v1.0.0
