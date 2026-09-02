@@ -1,6 +1,6 @@
 {
   "name": "archcss",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "The Architect CSS, is utility-first CSS framework that allows you to quickly create and design your websites and applications with flexible, easy-to-use classes without writing any custom CSS.",
   "main": "index.js",
   "scripts": {

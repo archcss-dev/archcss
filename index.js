@@ -13,4 +13,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-console.log("framework: archcss v2.0.0\n\ngit\: https://github.com/archcss-dev/archcss.git")
+console.log("framework: archcss v3.0.0-beta\n\ngit\: https://github.com/archcss-dev/archcss.git")
